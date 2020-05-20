@@ -10,12 +10,32 @@
 * Посчитать и вывести средний балл по каждому классу.
 """
 
+score_dicts = [{'school_class': '4a', 'scores': [3,4,4,5,2]},{'school_class': '11a', 'scores': [3,4,5,4,5,5,4]}, 
+    {'school_class': '8b', 'scores': [2,4,3,4,2,5,3]}, {'school_class': '2a', 'scores': [5,4,5,4,5,5,4]}]
+
+def get_average_sc_score():
+  points = 0
+  total_students = 0
+  for sc in score_dicts:
+    points += sum(sc['scores'])
+    total_students += len(sc['scores'])
+  average_sc_score = points / total_students
+  print ('Avarage score in school is: ' + str(round(average_sc_score,2)))
+
+def get_average_class():
+  points = 0
+  for sc in score_dicts:
+    points += sum(sc['scores'])
+    average_class_score = points / len(sc['scores'])
+    print ('In class ' + sc['school_class'] + f' - avarege point is: {round(average_class_score,2)}')
+    points = 0    
+    
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+
+  get_average_sc_score()
+  get_average_class()
+
+    
     
 if __name__ == "__main__":
     main()
