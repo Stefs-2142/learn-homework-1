@@ -15,11 +15,19 @@
     
 """
 
-def ask_user():
-    """
-    Замените pass на ваш код
-    """
-    pass
+q_a_dict = {"Что делаешь?":"Программирую","Как дела?":"Нормально","Выходил сегодня на улицу?":"Нет, сидел дома.",
+            "Как ты себя чувствуешь?":"Отлично!"}
+
+def ask_user_dict(user_dict):
+  
+  while True:
+    ask = input()
+    if ask in q_a_dict.keys():
+      return q_a_dict[ask]
+    else:
+      continue
     
+
+
 if __name__ == "__main__":
-    ask_user()
+  print(ask_user_dict(q_a_dict))
