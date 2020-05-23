@@ -19,7 +19,7 @@ def get_summ(num_one, num_two):
         summ = num_two + num_two
         return summ
       except ValueError:
-        print ('Вы ввели не число.')
+        return 'Вы ввели не число.'
       
     
     
@@ -30,5 +30,5 @@ if __name__ == "__main__":
   print(get_summ("five", 5))                     
   print(get_summ("six", "шесть"))    
 
-  """Как переписать функцию, чтобы она выводила результат без None?"""          
+            
                                                 
