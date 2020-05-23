@@ -124,3 +124,6 @@ dmypy.json
 
 # API, Proxy settings
 settings.py
+
+# IDE's stuff
+.vscode/
