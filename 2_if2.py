@@ -1,13 +1,12 @@
-def  str_compare(str_1, str_2):
+def str_compare(str_1, str_2):
 	""" Анализирует полученные аргументы """
 	if type(str_1) == str and type(str_2) == str:
 		if str_1 == str_2:
 			return 1
-		else:
-			if len(str_1) > len(str_2):
-				return 2
-			elif str_2 == 'learn':
-				return 3
+		elif len(str_1) > len(str_2):
+			return 2
+		elif str_2 == 'learn':
+			return 3
 	else:
 		return 0
 
