@@ -22,12 +22,13 @@ def ask_user_dict(user_dict):
   
   while True:
     ask = input()
-    if ask in q_a_dict.keys():
-      return q_a_dict[ask]
+    if ask in user_dict.keys():
+      return user_dict[ask]
     else:
+      print('Не знаком с такой командой :( Попробуй ещё раз.')
       continue
-    
-
 
 if __name__ == "__main__":
   print(ask_user_dict(q_a_dict))
+
+
