@@ -12,8 +12,8 @@
 
 def ask_user():
   while True:
-    ask = input('Как дела? ')
-    if ask == 'Хорошо':
+    answer = input('Как дела? ')
+    if answer == 'Хорошо':
       break
     else:
       continue
