@@ -1,15 +1,17 @@
-while True:                # Праверка на валидность введённых данных.
-    try:
-        age = abs(int(input('Введи свой возвраст, пожалуйста: ')))
-        if age:
-            break
-        else:
-            print("Попробуйте ещё раз.")
-    except ValueError:
-        print('Попроубйте ещё раз.')
-
-def distributor(age):
+def distributor():
     """Распределяет куда тебе идти в зависимости от возвраста."""
+    
+    while True:            # Праверка на валидность введённых данных.
+        try:
+            age = abs(int(input('Введи свой возвраст, пожалуйста: ')))
+            if age:
+                break
+            else:
+                print("Попробуйте ещё раз.")
+        except ValueError:
+            print('Попроубйте ещё раз.')
+
+
     if age <= 6:
         if age == 1:
             return f'Так как, тебе только {age} год, ты должен ходить в садик.'
@@ -25,7 +27,7 @@ def distributor(age):
         return f'Ты уже взрослый, начинай работать.'
 
 def main():
-    user_age = distributor(age)
+    user_age = distributor()
     print(user_age)
 
 if __name__ == "__main__":
