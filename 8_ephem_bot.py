@@ -30,7 +30,7 @@ def greet_user(update, context):
     update.message.reply_text(text)
 
 def get_ephem_info(update, context):
-    """Определяем в каком  совездии сегодня находится объект"""
+    """Определяет в каком  совездии сегодня находится объект"""
 
     entered_planet = update.message.text.split()[-1].capitalize()  # Получаем название планеты из пользовательского ввода команды /planet {planet_name}
     if hasattr(ephem, entered_planet):                             # Проверяем есть ли введённая планета
@@ -48,12 +48,31 @@ def talk_to_me(update, context):
     print(user_text)
     update.message.reply_text(user_text)
 
+def wordcounter(update, context):
+    """Определяет количество введёных слов"""
+    
+    words_for_count = update.message.text.split()[1:] 
+    if len(words_for_count) >= 1 and update.message.text[10:].replace(' ', '').isalpha(): # Проверка на пустое сообщение и проверка на введение чисел.
+        if len(words_for_count) == 1:
+            update.message.reply_text(f'{len(words_for_count)} слово.')
+        elif len(words_for_count) <= 4:
+            update.message.reply_text(f'{len(words_for_count)} слова.')
+        else:
+            update.message.reply_text(f'{len(words_for_count)} слов.')
+    else:
+        update.message.reply_text('Попробуйте ввести слова.')
+    
+    
+    
+    
+
 def main():
     mybot = Updater(settings.API_KEY, use_context=True, request_kwargs=PROXY)
 
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
-    dp.add_handler(CommandHandler("planet",get_ephem_info))
+    dp.add_handler(CommandHandler("planet", get_ephem_info))
+    dp.add_handler(CommandHandler("wordcount", wordcounter))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     logging.info('Бот стартовал')
