@@ -50,7 +50,7 @@ def talk_to_me(update, context):
 
 def wordcounter(update, context):
     """Определяет количество введёных слов"""
-    
+
     words_for_count = update.message.text.split()[1:] 
     if len(words_for_count) >= 1 and update.message.text[10:].replace(' ', '').isalpha(): # Проверка на пустое сообщение и проверка на введение чисел.
         if len(words_for_count) == 1:
@@ -61,6 +61,13 @@ def wordcounter(update, context):
             update.message.reply_text(f'{len(words_for_count)} слов.')
     else:
         update.message.reply_text('Попробуйте ввести слова.')
+
+def next_full_moon(update,context):
+    next_full_moon_date = ephem.next_full_moon(datetime.now())
+    print(type(next_full_moon_date))
+    update.message.reply_text(f"Следующее полнолунее будет {next_full_moon_date}")
+
+
     
     
     
@@ -73,6 +80,7 @@ def main():
     dp.add_handler(CommandHandler("start", greet_user))
     dp.add_handler(CommandHandler("planet", get_ephem_info))
     dp.add_handler(CommandHandler("wordcount", wordcounter))
+    dp.add_handler(MessageHandler(Filters.regex('^(Когда следующее новолуние)$'), next_full_moon))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     logging.info('Бот стартовал')
